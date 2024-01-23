@@ -1,0 +1,158 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  background-color: #f4f4f4;
+  width: 0;
+  height: 100%;
+  overflow-x: hidden;
+  transition: width 0.5s;
+  position: fixed;
+  z-index: 2;
+}
+
+.show-sidebar .sidebar {
+  width: 260px;
+}
+
+.container {
+  padding: 16px;
+}
+
+.content {
+  width: 100%;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.toggle-toc-button {
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: left 0.5s;
+  height: 64px;
+  border: none;
+  background: none;
+}
+
+.prev-chapter-button {
+  padding: 0;
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 80vw;
+  width: 0;
+  height: 0;
+  opacity: 20%;
+  border-left: none;
+  border-top: 64px solid transparent;
+  border-bottom: 64px solid transparent;
+  border-right: 32px solid black;
+  background: none;
+}
+
+.prev-chapter-background {
+  padding: 0;
+  position: fixed;
+  left: 0;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  height: 100vh;
+  width: 20vw;
+}
+
+.prev-chapter-button:hover + .prev-chapter-background {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+  transition: background 0.5s;
+}
+
+.next-chapter-button:hover + .next-chapter-background {
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.5), transparent);
+  transition: background 0.5s;
+}
+
+.next-chapter-button {
+  padding: 0;
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 80vw;
+  width: 0;
+  height: 0;
+  opacity: 20%;
+  border-right: none;
+  border-top: 64px solid transparent;
+  border-bottom: 64px solid transparent;
+  border-left: 32px solid black;
+  background: none;
+}
+
+.next-chapter-background {
+  padding: 0;
+  position: fixed;
+  right: 0;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  height: 100vh;
+  width: 20vw;
+}
+
+.toc-button-content {
+  width: 6px;
+  height: 64px;
+  opacity: 25%;
+  background-color: black;
+  border-radius: 16px;
+}
+
+.show-sidebar .toggle-toc-button {
+  left: 260px;
+}
+
+.toc-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.selected-toc-item {
+  display: flex;
+  align-items: center;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.selection-box {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.selection-box.selected {
+  background-color: #007bff;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  padding-top: 32px;
+  padding-bottom: 64px;
+}
