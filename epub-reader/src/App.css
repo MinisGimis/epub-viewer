@@ -21,6 +21,48 @@
   padding: 16px;
 }
 
+.button {
+  width: 220px;
+  margin-bottom: 8px;
+}
+
+.button input[type="file"] {
+  display: none;
+}
+
+.button label {
+  display: flex;
+  place-content: center;
+  background-color: black;
+  opacity: 50%;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button button {
+  width: 220px;
+  background-color: black;
+  opacity: 50%;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button label:hover {
+  background-color: black;
+  opacity: 70%;
+}
+
+.button button:hover {
+  background-color: black;
+  opacity: 70%;
+}
+
 .content {
   width: 100%;
   padding: 20px;
@@ -35,9 +77,19 @@
   top: 50%;
   transform: translateY(-50%);
   transition: left 0.5s;
-  height: 64px;
+  height: 128px;
+  width: 64px;
   border: none;
   background: none;
+}
+
+.toggle-toc-button:hover + .sidebar {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.toggle-toc-button:hover + .toc-button-content {
+  background-color: black;
+  opacity: 70%;
 }
 
 .prev-chapter-button {
@@ -111,11 +163,22 @@
 }
 
 .toc-button-content {
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: left 0.5s;
+
   width: 6px;
   height: 64px;
   opacity: 25%;
   background-color: black;
   border-radius: 16px;
+}
+
+.show-sidebar .toc-button-content {
+  left: 268px;
 }
 
 .show-sidebar .toggle-toc-button {

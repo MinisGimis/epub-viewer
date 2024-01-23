@@ -64,6 +64,20 @@ const App = () => {
       return <p>No table of contents available.</p>;
     }
     console.log(toc);
+
+    let spine_get = rendition.book.spine.get.bind(rendition.book.spine);
+    rendition.book.spine.get = function (target) {
+      let t = spine_get(target);
+      console.log(t);
+      while (t == null && target.startsWith("../")) {
+        target = target.substring(3);
+        t = spine_get(target);
+      }
+      return t;
+    };
+
+    console.log(toc);
+
     return (
       <div>
         {toc.map((item, index) =>
@@ -105,21 +119,23 @@ const App = () => {
 
   return (
     <div className={`app-container ${showSidebar ? "show-sidebar" : ""}`}>
+      <button onClick={toggleSidebar} className="toggle-toc-button"></button>
+      <div className="toc-button-content"></div>
       <div className="sidebar">
         <div className="container">
-          <h1>My EPUB Reader</h1>
+          <h1>Minis' EPUB Reader</h1>
           <FileUpload onFileSelect={onFileSelect} />
-          <button onClick={handleDownload} disabled={!file}>
-            Download Book
-          </button>
+          <div className="button">
+            <button onClick={handleDownload} disabled={!file}>
+              Download Book
+            </button>
+          </div>
           <h2>Table of Contents</h2>
           {renderTOC(toc)}
         </div>
       </div>
+
       <div className="content">
-        <button onClick={toggleSidebar} className="toggle-toc-button">
-          <div className="toc-button-content"></div>
-        </button>
         <div className="center-content">
           {selectedChapter != null && selectedChapter > 0 ? (
             <button
